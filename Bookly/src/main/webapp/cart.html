@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background:linear-gradient(to right, rgb(0, 128, 0), rgb(179, 179, 0));
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #cart {
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            max-width: 50px;
+            max-height: 50px;
+            margin-right: 10px;
+        }
+
+        span {
+            flex-grow: 1;
+        }
+
+        p {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+  
+    <main>
+        <div id="cart">
+            <h2>Cart Items</h2>
+            <ul id="cart-items"></ul>
+            <p>Total:<span id="total">0.00</span> /-</p>
+
+            <!-- Add a button to pay the total amount -->
+            <button onclick="payTotal()">Pay Total</button>
+        </div>
+    </main>
+
+    <script>
+        function displayCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+            const cartList = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+            let total = 0;
+
+            cartList.innerHTML = '';
+
+            cartItems.forEach(item => {
+                const listItem = document.createElement('li');
+                const image = document.createElement('img');
+                image.src = item.image; // Set the image source
+                image.alt = item.name; // Set the alt attribute
+                listItem.appendChild(image);
+
+                const textSpan = document.createElement('span');
+                textSpan.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+                listItem.appendChild(textSpan);
+
+                cartList.appendChild(listItem);
+
+                total += item.price;
+            });
+
+            totalElement.textContent = total.toFixed(2);
+        }
+
+        // Call displayCart when the cart page loads
+        displayCart();
+
+        // Function to handle the payment logic
+        function payTotal() {
+            const total = parseFloat(document.getElementById('total').textContent);
+
+            // Replace this alert with your actual payment processing logic
+            alert(`Payment processed successfully! Total amount: $${total.toFixed(2)}`);
+
+            // Optionally, clear the cart after payment
+            localStorage.removeItem('cartItems');
+            displayCart();
+        }
+    </script>
+</body>
+</html>

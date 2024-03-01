@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>new user</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background:linear-gradient(to right, rgb(0, 128, 0), rgb(179, 179, 0));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #registrationForm {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        .btn {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+
+	
+
+</head>
+
+<body>
+<div class="reg-form-container">
+		<form action="newuser" id="registrationForm">
+			<h2>User Registration</h2>
+        <label for="username">Username:</label>
+        <input type="text" class="box" placeholder="enter your username" id=""name="uname" >
+        <label for="username">Password:</label>
+        <input type="password" class="box" bo placeholder="enter your password" id=""name="pwd">
+        <label for="username">Firstname:</label>
+        <input type="text" class="box" placeholder="enter your firstname" id="" name="fname">
+        <label for="username">Lastname:</label>
+       <input type="text" class="box"  placeholder="enter your lastname" id="" name="lname">
+        <label for="username">Mail id:</label>
+        <input type="email" class="box" placeholder="enter your email" id=""name="mid">
+        <label for="username">Mob no:</label>
+        <input type="number" class="box" bo placeholder="enter your phone no" id=""name="mobno">
+        
+        <input type="submit" value="create account" class="btn">
+			
+			
+
+		</form>
+	</div>
+	
+	<!-- js link -->
+	<script src="script.js"></script>
+</body>
+</html>
